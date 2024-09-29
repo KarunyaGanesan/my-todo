@@ -1,0 +1,95 @@
+<style>
+    body {
+        background-image: url(./images/profile\ .jpg);
+        background-size: cover;
+        height: 100vh;
+        font-family: cursive;
+
+    }
+
+    .head{
+        background-color: rgba(165, 42, 42, 0.121);
+       
+    }
+
+    .head p{
+        padding: 0 0 0 5px;
+    }
+</style>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+
+</head>
+
+<body>
+    <div class="head">
+        <h1 class="heading">To-do List </h1>
+        <p>Way to my Goal</p>
+    </div>
+    <div>
+        <input class="check" type="checkbox" <p>Drink 8 Glass of water</p>
+        <input class="check" type="checkbox" <p>Meditate for 5 mins</p>
+        <input class="check" type="checkbox" <p> Read two pages</p>
+        <input class="check" type="checkbox" <p>Workout for 30 minutes</p>
+        <input class="check" type="checkbox" <p>Complete 10k steps</p>
+        <input class="check" type="checkbox" <p> Avoid Junks</p>
+        <input class="check" type="checkbox" <p> Go for office</p>
+    </div>
+    <div class="congratulations" id="congratulations">
+        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmVzYW9tM3RpOGJucTBnOXhoNmJkYmVha3JrcXVxZG10MzJvb2hvciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5anhAz5vge67SlblGu/giphy.gif" alt="Congrats Image" width="200">
+    </div>
+    <!-- Hidden motivational message -->
+    <div class="motivational" id="motivational" style="display: none;">
+        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExemRxenpwOGJuZHA2azU2OXU1eXd3OXcwMGkyMHlvc2NkdmZxYzNqNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5JHbza8gCor2djz3fL/giphy.gif" alt="Motivational Image" width="200">
+</div>
+    </div>
+
+</body>
+<script>
+   // Select all checkboxes
+const checkboxes = document.querySelectorAll('.check');
+const congratulations = document.getElementById('congratulations');
+const motivational = document.getElementById('motivational');
+
+// Function to update messages based on checkbox states
+function updateMessages() {
+    const allChecked = [...checkboxes].every(box => box.checked);
+    const noneChecked = [...checkboxes].every(box => !box.checked);
+
+    if (allChecked) {
+        congratulations.style.display = 'block';
+        motivational.style.display = 'none';
+    } else if (noneChecked) {
+        motivational.style.display = 'block';
+        congratulations.style.display = 'none';
+    } else {
+        congratulations.style.display = 'none';
+        motivational.style.display = 'block';
+    }
+}
+
+// Add event listener to each checkbox
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+        // Toggle line-through style
+        checkbox.nextElementSibling.style.textDecoration = checkbox.checked ? 'line-through' : 'none';
+        // Update messages
+        updateMessages();
+    });
+});
+
+// Update messages on page load
+updateMessages();
+
+
+</script>
+
+</html>
